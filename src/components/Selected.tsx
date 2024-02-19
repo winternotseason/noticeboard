@@ -25,17 +25,30 @@ const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
     <div className="list-container" ref={ref}>
       <ul className="list">
         <li onClick={onClick}>
-          <Link to="/main">메인</Link>
+          <Link to="/main" className="list-content">
+            메인
+          </Link>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/free">자유</Link>
+          <Link to="/main/free" className="list-content">
+            자유
+          </Link>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/album">앨범</Link>
+          <Link to="/main/album" className="list-content">
+            앨범
+          </Link>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/announce">공지사항</Link>
+          <Link to="/main/announce" className="list-content">
+            공지사항
+          </Link>
         </li>
+        <div onClick={onClick}>
+          <Link to="/" className="logout">
+            로그아웃
+          </Link>
+        </div>
       </ul>
     </div>
   );
