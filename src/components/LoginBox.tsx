@@ -1,9 +1,15 @@
-import React, { SyntheticEvent, useRef, useState } from "react";
+import React, {useRef} from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginBox.scss";
 
 const LoginBox = () => {
   const focusRef = useRef<HTMLLabelElement>(null);
   const focusRef_ = useRef<HTMLLabelElement>(null);
+
+  const navigate = useNavigate();
+  const goUrl = () => {
+    navigate('/main')
+  }
 
   const onFocusEventHanlder = (e: any) => {
     if (e.target.id === "input-username") {
@@ -55,7 +61,7 @@ const LoginBox = () => {
           </label>
           <span>아이디 저장하기</span>
         </div>
-        <input type="submit" value="로그인" className="login"/>
+        <input type="submit" value="로그인" className="login" onClick={goUrl}/>
         <input type="submit" value="카카오톡으로 로그인" className="kakao"/>
         <input type="submit" value="Apple id로 로그인" className="apple"/>
       </form>
