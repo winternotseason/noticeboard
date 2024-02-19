@@ -7,9 +7,9 @@ const Layout = () => {
     <>
       <MainNavigation />
       <Outlet />
+ 
     </>
   );
 };
 
 export default Layout;
- 

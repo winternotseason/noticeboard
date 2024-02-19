@@ -1,5 +1,9 @@
+.list-container {
+  position: relative;
+  z-index: 999;
+}
 .list {
-  position:fixed;
+  position: fixed;
   top: -1rem;
   right: 0px;
   display: flex;
@@ -9,17 +13,37 @@
   padding-bottom: 2rem;
   padding-left: 1rem;
   list-style: none;
-  border: 1px solid black;
   width: 60%;
   height: 100%;
-  background-color: aliceblue;
-  z-index: 999;
-
+  background-color: white;
+  animation: slide 0.5s ease-in;
+  box-shadow: -5px 0 5px -5px #333;
   a {
     font-size: 1rem;
     font-weight: 800;
     text-decoration: none;
     color: rgb(112, 112, 112);
-    border-bottom: 1px solid gray;
+  }
+  li {
+    cursor: pointer;
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
   }
 }

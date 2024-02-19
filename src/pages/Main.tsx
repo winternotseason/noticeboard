@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import List from "../components/List";
 
 const Main = () => {
-    return (
-        <h3>
-            Main Page
-        </h3>
-    );
+  return <List />;
 };
 
 export default Main;

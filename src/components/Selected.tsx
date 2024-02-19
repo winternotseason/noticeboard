@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Selected.scss";
 
+const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
+  const onClick = () => {
+    setOnSelectedManu(false);
+  };
 
-const Selected: React.FC<any> = ({ setOnSelectedManu }) => {
-    const onClick = () => {
-        setOnSelectedManu(false)
+  useEffect(() => {
+    function handleClickOutside(e: any): void {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOnSelectedManu(false);
+      }
     }
-  
-    return (
-    <ul className="list">
-      <button onClick={onClick}>x</button>
-      <li>
-        <Link to="/main">일상</Link>
-      </li>
-      <li>
-        <Link to="/main/profile">사진</Link>
-      </li>
-      <li>
-        <Link to="/main/profile">유머</Link>
-      </li>
-      <li>
-        <Link to="/main/profile">계획</Link>
-      </li>
-    </ul>
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+
+  return (
+    <div className="list-container" ref={ref}>
+      <ul className="list">
+        <li onClick={onClick}>
+          <Link to="/main">메인</Link>
+        </li>
+        <li onClick={onClick}>
+          <Link to="/main/free">자유</Link>
+        </li>
+        <li onClick={onClick}>
+          <Link to="/main/album">앨범</Link>
+        </li>
+        <li onClick={onClick}>
+          <Link to="/main/announce">공지사항</Link>
+        </li>
+      </ul>
+    </div>
   );
 };
 

@@ -1,8 +1,7 @@
 $color-green: #04aa6d;
 
 .header {
- 
-  max-width: 60rem;
+  width: 100vw;
   margin: auto;
   padding: 1rem 1.5rem;
   display: flex;
@@ -36,9 +35,12 @@ $color-green: #04aa6d;
     }
   }
   .border-list {
+    display: flex;
+    position: fixed;
+    right: 1.5rem;
     color: white;
     cursor: pointer;
     font-weight: 800;
+    font-size: 30px;
   }
 }
-

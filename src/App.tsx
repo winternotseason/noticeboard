@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
+import Announce from "./pages/Announce";
+import Free from "./pages/Free";
+import Album from "./pages/Album";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +19,16 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: "/main/profile",
-        element: <Profile />,
+        path: "/main/announce",
+        element: <Announce />,
+      },
+      {
+        path: "/main/free",
+        element: <Free />,
+      },
+      {
+        path: "/main/album",
+        element: <Album />,
       },
     ],
   },
