@@ -1,0 +1,14 @@
+$color-background: rgb(234, 240, 255);
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-background;
+  background-image: url("../assets/field-1728099_1920.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+}
