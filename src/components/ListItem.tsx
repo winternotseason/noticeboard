@@ -1,15 +1,19 @@
-import React from 'react';
-import { Post, postList } from '../dummy';
-import './ListItem.scss';
+import React from "react";
+import { Post } from "../dummy";
+import "./ListItem.scss";
+import { Link } from "react-router-dom";
 
-const ListItem:React.FC<{post:Post; index:number}> = ({post,index}) => {
-
-    return (
-        <div className='item'>
-            <div className='item-main-content'>{post.title}</div>
-            <div className='item-sub-content'>{post.name} | 조회 : {post.view}</div>
+const ListItem: React.FC<{ post: Post; }> = ({ post }) => {
+  return (
+    <li className="item">
+      <Link to={`/main/${post.index}`} className="item-content">
+        <div className="item-main-content">{post.title}</div>
+        <div className="item-sub-content">
+          {post.name} | 조회 : {post.view}
         </div>
-    );
+      </Link>
+    </li>
+  );
 };
 
 export default ListItem;

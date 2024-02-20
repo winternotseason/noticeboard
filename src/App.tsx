@@ -8,6 +8,7 @@ import Announce from "./pages/Announce";
 import Free from "./pages/Free";
 import Album from "./pages/Album";
 import ErrorPage from "./pages/Error";
+import PostDetailPage from "./pages/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Main />,
+      },
+      {
+        path: "/main",
+        element: <Main />,
+      },
+      {
+        path: "/main/:id",
+        element: <PostDetailPage />,
       },
       {
         path: "/announce",

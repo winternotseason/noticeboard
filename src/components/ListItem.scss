@@ -1,13 +1,17 @@
 .item {
   border-bottom: 1px solid rgb(189, 189, 189);
-  padding:0.5rem;
+  padding: 0.5rem;
   cursor: pointer;
-  .item-sub-content{
+  .item-content {
+    text-decoration: none;
+    .item-sub-content {
       font-size: 12px;
       color: #868686;
-  }
-  .item-main-content {
+    }
+    .item-main-content {
       font-weight: 800;
-      margin-bottom:0.2rem;
+      margin-bottom: 0.2rem;
+      color: black;
+    }
   }
 }

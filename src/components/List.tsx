@@ -8,8 +8,8 @@ const List = () => {
     <div className="post-list">
       <h3>자유</h3>
       <ul>
-        {postList.slice(0).reverse().map((post, i) => (
-          <ListItem post={post} index={i+1} />
+        {postList.slice(0).reverse().map((post) => (
+          <ListItem post={post}/>
         ))}
       </ul>
     </div>
