@@ -4,35 +4,36 @@ import Container from "./components/Container";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";
-import Profile from "./pages/Profile";
 import Announce from "./pages/Announce";
 import Free from "./pages/Free";
 import Album from "./pages/Album";
+import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
   {
-    path: "/main",
+    path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "/main",
+        path: "/",
         element: <Main />,
       },
       {
-        path: "/main/announce",
+        path: "/announce",
         element: <Announce />,
       },
       {
-        path: "/main/free",
+        path: "/free",
         element: <Free />,
       },
       {
-        path: "/main/album",
+        path: "/album",
         element: <Album />,
       },
     ],
   },
-  { path: "/", element: <Container /> },
+  { path: "/login", element: <Container /> },
 ]);
 
 function App() {

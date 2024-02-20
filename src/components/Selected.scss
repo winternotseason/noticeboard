@@ -25,6 +25,11 @@
     text-decoration: none;
     color: rgb(112, 112, 112);
   }
+
+  .active {
+    color: var(--color-primary-800);
+  }
+
   li {
     cursor: pointer;
   }

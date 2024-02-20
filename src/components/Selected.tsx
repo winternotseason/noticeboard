@@ -1,14 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Selected.scss";
 
 const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
+
+  /* 목록 메뉴 컨테이너 reference */
   const ref = useRef<HTMLDivElement>(null);
 
   const onClick = () => {
     setOnSelectedManu(false);
   };
 
+  /* 드롭 메뉴 열린 상태에서 메뉴 창 밖을 클릭하면 메뉴가 off되는 기능*/
   useEffect(() => {
     function handleClickOutside(e: any): void {
       if (ref.current && !ref.current.contains(e.target)) {
@@ -25,29 +28,29 @@ const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
     <div className="list-container" ref={ref}>
       <ul className="list">
         <li onClick={onClick}>
-          <Link to="/main" className="list-content">
+          <NavLink to="/" className={({isActive})=> isActive ? 'list-content active' : 'list-content'} end>
             메인
-          </Link>
+          </NavLink>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/free" className="list-content">
+          <NavLink to="/free" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
             자유
-          </Link>
+          </NavLink>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/album" className="list-content">
+          <NavLink to="/album" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
             앨범
-          </Link>
+          </NavLink>
         </li>
         <li onClick={onClick}>
-          <Link to="/main/announce" className="list-content">
+          <NavLink to="/announce" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
             공지사항
-          </Link>
+          </NavLink>
         </li>
         <div onClick={onClick}>
-          <Link to="/" className="logout">
+          <NavLink to="/login" className="logout">
             로그아웃
-          </Link>
+          </NavLink>
         </div>
       </ul>
     </div>

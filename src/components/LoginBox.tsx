@@ -8,7 +8,7 @@ const LoginBox = () => {
 
   const navigate = useNavigate();
   const goUrl = () => {
-    navigate('/main')
+    navigate('/')
   }
 
   const onFocusEventHanlder = (e: any) => {
