@@ -1,6 +1,6 @@
 import "./App.css";
 import { useMediaQuery } from "react-responsive";
-import Container from "./components/Container";
+import Container from "./components/login/Container";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";
@@ -9,6 +9,8 @@ import Free from "./pages/Free";
 import Album from "./pages/Album";
 import ErrorPage from "./pages/Error";
 import PostDetailPage from "./pages/PostDetail";
+import Join from "./pages/Join";
+import LoginPage from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +44,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/login", element: <Container /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/join", element: <Join /> },
 ]);
 
 function App() {

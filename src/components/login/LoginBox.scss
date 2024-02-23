@@ -37,7 +37,7 @@ $color-green: #04aa6d;
     border: none;
     background-color: #fee500;
   }
-  .apple {
+  .join {
     border: 1px solid rgb(213, 213, 213);
     background-color: #f6fff0;
   }
@@ -116,4 +116,8 @@ $color-green: #04aa6d;
   text-transform: uppercase;
   font-weight: 600;
   color: $color-green !important;
+}
+
+.label-opcacity {
+  opacity: 0;
 }

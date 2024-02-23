@@ -1,12 +1,13 @@
 import React from "react";
-import "./Container.scss";
+import UiContainer from "../UI/UiContainer";
+
 import LoginBox from "./LoginBox";
 
 const Container: React.FC = () => {
   return (
-    <div className="container">
+    <UiContainer>
       <LoginBox />
-    </div>
+    </UiContainer>
   );
 };
 

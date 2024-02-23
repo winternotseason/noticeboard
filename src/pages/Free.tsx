@@ -1,10 +1,9 @@
 import React from 'react';
+import List from '../components/List';
 
 const Free = () => {
     return (
-        <h3>
-            Free Page
-        </h3>
+        <List bordername='자유'/>
     );
 };
 
