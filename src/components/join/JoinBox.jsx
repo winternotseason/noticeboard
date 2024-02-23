@@ -44,19 +44,18 @@ const JoinBox = () => {
       setFocus("passwordValid");
     } else {
       const data = {
-        userId: watch("id"),
-        userName: watch("nickname"),
-        userPassword: watch("password"),
-        passwordValid: watch("passwordValid"),
+        id: watch("id"),
+        nickname: watch("nickname"),
+        password: watch("password"),
       };
-      axios.post("http://localhost:8085/", data, {
+      axios.post("http://localhost:8001/join", JSON.stringify(data), {
         headers: { "Content-Type": "application/json" },
       });
 
       navigate("/login");
     }
   };
-  
+
   return (
     <div className="join-wrapper">
       <h2>회원가입</h2>
