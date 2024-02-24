@@ -1,11 +1,12 @@
 import "./JoinBox.scss";
 import { useForm } from "react-hook-form";
 import React from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 import { regExpEm, regExgPw, regExpNm } from "../../constants/reg";
 import Wrapper from "../UI/Wrapper";
 import { User } from "../../constants/interface";
+import { AsyncResource } from "async_hooks";
 
 const JoinBox = () => {
   const navigate = useNavigate();
@@ -21,13 +22,20 @@ const JoinBox = () => {
   });
 
   // form 제출 함수
-  const handleJoinUser = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleJoinUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (errors?.id?.type === "pattern" || "required") {
+    if (
+      (errors?.id?.type === "pattern" || "required") &&
+      errors?.id?.type !== undefined
+    ) {
+      console.log(errors?.id?.type); // undefined
       alert("아이디를 다시 입력해주세요. (영문자 또는 숫자 6~20자)");
       resetField("id");
       setFocus("id");
-    } else if (errors?.nickname?.type === "pattern" || "required") {
+    } else if (
+      (errors?.nickname?.type === "pattern" || "required") &&
+      errors?.nickname?.type !== undefined
+    ) {
       alert("닉네임을 다시 입력해주세요. (영문자, 한글 또는 숫자 2~16자)");
       resetField("nickname");
       setFocus("nickname");
@@ -47,11 +55,23 @@ const JoinBox = () => {
         nickname: watch("nickname"),
         password: watch("password"),
       };
-      axios.post("http://localhost:8001/join", JSON.stringify(user), {
-        headers: { "Content-Type": "application/json" },
-      });
+
+      axios
+        .post("http://localhost:8001/join", JSON.stringify(user), {
+          headers: { "Content-Type": "application/json" },
+        })
+        .then(() => {
+          navigate("/login");
+          alert("회원가입 성공");
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("이미 존재하는 아이디입니다.");
+          resetField("id");
+          setFocus("id");
+        });
+
       // 회원가입에 성공했을 경우
-      navigate("/login");
     }
   };
 

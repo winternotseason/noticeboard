@@ -1,8 +1,8 @@
 import React from "react";
-import List from "../components/List";
+import List from "../components/post/List"
 
 const Album = () => {
-  return <List bordername="앨범"/>;
+  return <List borderTitle="앨범"/>;
 }
 
 export default Album;

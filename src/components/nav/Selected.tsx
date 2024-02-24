@@ -2,19 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./Selected.scss";
 
-const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
+const Selected: React.FC<any> = ({ setSelectedManu }) => {
   /* 목록 메뉴 컨테이너 reference */
   const ref = useRef<HTMLDivElement>(null);
 
   const onClick = () => {
-    setOnSelectedManu(false);
+    setSelectedManu(false);
   };
 
   /* 드롭 메뉴 열린 상태에서 메뉴 창 밖을 클릭하면 메뉴가 off되는 기능*/
   useEffect(() => {
     function handleClickOutside(e: any): void {
       if (ref.current && !ref.current.contains(e.target)) {
-        setOnSelectedManu(false);
+        setSelectedManu(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);

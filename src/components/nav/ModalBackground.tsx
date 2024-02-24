@@ -1,6 +1,6 @@
 import "./ModalBackground.scss";
-const ModalBackground: React.FC<any> = ({ onSelectedManu }) => {
-  return <>{onSelectedManu && <div className="background" />}</>;
+const ModalBackground: React.FC<any> = ({ SelectedManu }) => {
+  return <>{SelectedManu && <div className="background" />}</>;
 };
 
 export default ModalBackground;
