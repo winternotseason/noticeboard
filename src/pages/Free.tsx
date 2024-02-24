@@ -1,9 +1,9 @@
 import React from 'react';
-import List from '../components/List';
+import List from '../components/post/List';
 
 const Free = () => {
     return (
-        <List bordername='자유'/>
+        <List borderTitle='자유'/>
     );
 };
 

@@ -1,6 +1,6 @@
 .item {
-  border-bottom: 1px solid rgb(189, 189, 189);
   padding: 0.5rem;
+  border-bottom: 1px solid rgb(189, 189, 189);
   cursor: pointer;
   .item-content {
     text-decoration: none;
@@ -9,8 +9,8 @@
       color: #868686;
     }
     .item-main-content {
-      font-weight: 800;
       margin-bottom: 0.2rem;
+      font-weight: 800;
       color: black;
     }
   }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import "./MainNavigation.scss";
 import profileImg from "../assets/dinosaur-5666127_1280.png";
 import Selected from "./Selected";
@@ -7,9 +6,9 @@ import ModalBackground from "./ModalBackground";
 import { LuMenu } from "react-icons/lu";
 
 const MainNavigation = () => {
-  const [onSelectedManu, setOnSelectedManu] = useState(false);
-  const onSelectedManuHanlder = () => {
-    setOnSelectedManu(!onSelectedManu);
+  const [SelectedManu, setSelectedManu] = useState(false);
+  const handlerSelectedManu = () => {
+    setSelectedManu(!SelectedManu);
   };
 
   return (
@@ -20,18 +19,18 @@ const MainNavigation = () => {
             <img src={profileImg} alt="profile" />
             <h4>NAME</h4>
           </div>
-          <p onClick={onSelectedManuHanlder} className="border-list">
+          <p onClick={handlerSelectedManu} className="border-list">
             <LuMenu />
           </p>
-          {onSelectedManu && (
+          {SelectedManu && (
             <Selected
-              setOnSelectedManu={setOnSelectedManu}
-              onSelectedManu={onSelectedManu}
+              setSelectedManu={setSelectedManu}
+              SelectedManu={SelectedManu}
             />
           )}
         </nav>
       </header>
-      <ModalBackground onSelectedManu={onSelectedManu} />
+      <ModalBackground SelectedManu={SelectedManu} />
     </>
   );
 };

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Selected.scss";
 
 const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
-
   /* 목록 메뉴 컨테이너 reference */
   const ref = useRef<HTMLDivElement>(null);
 
@@ -28,22 +27,43 @@ const Selected: React.FC<any> = ({ setOnSelectedManu, onSelectedManu }) => {
     <div className="list-container" ref={ref}>
       <ul className="list">
         <li onClick={onClick}>
-          <NavLink to="/" className={({isActive})=> isActive ? 'list-content active' : 'list-content'} end>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "list-content active" : "list-content"
+            }
+            end
+          >
             메인
           </NavLink>
         </li>
         <li onClick={onClick}>
-          <NavLink to="/free" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
+          <NavLink
+            to="/free"
+            className={({ isActive }) =>
+              isActive ? "list-content active" : "list-content"
+            }
+          >
             자유
           </NavLink>
         </li>
         <li onClick={onClick}>
-          <NavLink to="/album" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
+          <NavLink
+            to="/album"
+            className={({ isActive }) =>
+              isActive ? "list-content active" : "list-content"
+            }
+          >
             앨범
           </NavLink>
         </li>
         <li onClick={onClick}>
-          <NavLink to="/announce" className={({isActive})=> isActive ? 'list-content active' : 'list-content'}>
+          <NavLink
+            to="/announce"
+            className={({ isActive }) =>
+              isActive ? "list-content active" : "list-content"
+            }
+          >
             공지사항
           </NavLink>
         </li>

@@ -5,7 +5,6 @@ export interface Post {
   view: number;
 }
 
-
 export const postList: Post[] = [
   {
     index: 1,
@@ -35,3 +34,9 @@ export const postList: Post[] = [
     view: 10,
   },
 ];
+
+export interface User {
+  id: string;
+  password: string;
+  nickname: string;
+}

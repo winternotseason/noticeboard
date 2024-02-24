@@ -1,10 +1,8 @@
-import React from 'react';
-import List from '../components/List';
+import React from "react";
+import List from "../components/post/List";
 
 const Announce = () => {
-    return (
-    <List bordername='공지사항' />
-    );
+  return <List borderTitle="공지사항" />;
 };
 
 export default Announce;

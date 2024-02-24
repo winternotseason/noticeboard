@@ -1,8 +1,8 @@
 import React from "react";
 import "./UiContainer.scss";
 
-const UiContainer: React.FC<{ children: any }> = (props) => {
-  return <div className="container">{props.children}</div>;
+const UiContainer: React.FC<{ children: JSX.Element }> = ({children}) => {
+  return <div className="container">{children}</div>;
 };
 
 export default UiContainer;

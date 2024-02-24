@@ -1,6 +1,5 @@
 import "./App.css";
 import { useMediaQuery } from "react-responsive";
-import Container from "./components/login/Container";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";

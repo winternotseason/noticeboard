@@ -3,7 +3,7 @@ import UiContainer from "../UI/UiContainer";
 
 import LoginBox from "./LoginBox";
 
-const Container: React.FC = () => {
+const LoginContainer: React.FC = () => {
   return (
     <UiContainer>
       <LoginBox />
@@ -11,4 +11,4 @@ const Container: React.FC = () => {
   );
 };
 
-export default Container;
+export default LoginContainer;

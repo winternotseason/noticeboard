@@ -1,20 +1,5 @@
 $color-green: #04aa6d;
 
-.login-wrapper {
-  width: 80%;
-  height: 40rem;
-  padding: 3rem;
-  background-color: #f6fff0;
-  border-radius: 30px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  h2 {
-    margin: 0;
-    font-size: 40px;
-    color: $color-green;
-    font-weight: 900;
-  }
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
@@ -66,27 +51,27 @@ $color-green: #04aa6d;
     }
   }
   label {
-    color: #ccc;
     position: absolute;
-    cursor: text;
     left: 5px;
     bottom: 8px;
+    color: #ccc;
+    cursor: text;
   }
 }
 
 .checkbox {
-  width: 100%;
-  margin-top: 4rem;
-  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: 100%;
+  margin-top: 4rem;
+  margin-bottom: 1.2rem;
   label {
     display: inline-block;
     width: 13px;
     height: 13px;
-    cursor: pointer;
     border-radius: 50%;
+    cursor: pointer;
   }
   input {
     display: none;
@@ -103,18 +88,19 @@ $color-green: #04aa6d;
   span {
     position: relative;
     top: 1.2px;
-    color: rgb(94, 94, 94);
+    margin-left: 0.5rem;
     font-size: 13px;
     font-weight: 300;
-    margin-left: 0.5rem;
+    color: rgb(94, 94, 94); 
   }
 }
+
 .animation {
+  font-size: 10px;
+  font-weight: 600;
   transform: translateY(-30px);
   transition: 0.6s;
-  font-size: 10px;
   text-transform: uppercase;
-  font-weight: 600;
   color: $color-green !important;
 }
 

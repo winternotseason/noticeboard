@@ -3,15 +3,13 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { regExpEm, regExgPw, regExpNm } from "../../constants/reg";
+import Wrapper from "../UI/Wrapper";
+import { User } from "../../constants/interface";
 
 const JoinBox = () => {
   const navigate = useNavigate();
-  // 이메일, 비밀번호 유효성 검사
-  const regExpEm = /^[a-z]+[a-z0-9]{5,19}$/g;
 
-  const regExgPw = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-
-  const regExpNm = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
   const {
     register,
     watch,
@@ -21,15 +19,15 @@ const JoinBox = () => {
   } = useForm({
     mode: "onChange",
   });
-  // form 제출 함수
-  const click = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
 
-    if ((errors?.id?.type === "pattern") | "required") {
+  // form 제출 함수
+  const handleJoinUser = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (errors?.id?.type === "pattern" || "required") {
       alert("아이디를 다시 입력해주세요. (영문자 또는 숫자 6~20자)");
       resetField("id");
       setFocus("id");
-    } else if ((errors?.nickname?.type === "pattern") | "required") {
+    } else if (errors?.nickname?.type === "pattern" || "required") {
       alert("닉네임을 다시 입력해주세요. (영문자, 한글 또는 숫자 2~16자)");
       resetField("nickname");
       setFocus("nickname");
@@ -38,28 +36,29 @@ const JoinBox = () => {
       resetField("password");
       resetField("passwordValid");
       setFocus("password");
+      // 비밀번호가 다른 경우
     } else if (watch("password") !== watch("passwordValid")) {
       alert("비밀번호가 다릅니다.");
       resetField("passwordValid");
       setFocus("passwordValid");
     } else {
-      const data = {
+      const user: User = {
         id: watch("id"),
         nickname: watch("nickname"),
         password: watch("password"),
       };
-      axios.post("http://localhost:8001/join", JSON.stringify(data), {
+      axios.post("http://localhost:8001/join", JSON.stringify(user), {
         headers: { "Content-Type": "application/json" },
       });
-
+      // 회원가입에 성공했을 경우
       navigate("/login");
     }
   };
 
   return (
-    <div className="join-wrapper">
+    <Wrapper>
       <h2>회원가입</h2>
-      <form className="join-form">
+      <form className="join-form flex-column">
         <label htmlFor="id" unselectable="on">
           아이디
         </label>
@@ -98,11 +97,11 @@ const JoinBox = () => {
           {...register("passwordValid", { required: true })}
         />
 
-        <button className="btn" onClick={click}>
+        <button className="btn" onClick={handleJoinUser}>
           가입하기
         </button>
       </form>
-    </div>
+    </Wrapper>
   );
 };
 
