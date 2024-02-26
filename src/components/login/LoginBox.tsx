@@ -7,28 +7,30 @@ import { useAppDispatch } from "../../hooks";
 import { authActions } from "../../store/auth";
 import axios from "axios";
 
+type User = {
+  id: string;
+  password: string;
+};
 
 const LoginBox = () => {
-
   const idRef = useRef<HTMLLabelElement>(null);
   const passwordRef = useRef<HTMLLabelElement>(null);
 
   const navigate = useNavigate();
 
-  const { register, watch } = useForm({
-    mode: "onChange",
-  });
+  const { register, watch, handleSubmit } = useForm<User>({});
 
-  const goJoinPage = () => {
-    navigate("/join");
-  };
-
-  const handlerSuccessLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    axios.post("http://localhost:8001/auth/login", {
-      id: watch("userid"),
-      password: watch("userpassword"),
-    });
+  const onSubmit = (data: User) => {
+    axios
+      .post("http://localhost:8001/auth/login", data, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(document.cookie);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
   // input focus animation
   const handlerFocusOnInput = (e: any) => {
@@ -47,13 +49,13 @@ const LoginBox = () => {
   };
 
   // input에 value 있을때 label 안보이게
-  if (watch("userid")) {
+  if (watch("id")) {
     idRef.current?.classList.add("label-opcacity");
   } else {
     idRef.current?.classList.remove("label-opcacity");
   }
 
-  if (watch("userpassword")) {
+  if (watch("password")) {
     passwordRef.current?.classList.add("label-opcacity");
   } else {
     passwordRef.current?.classList.remove("label-opcacity");
@@ -62,12 +64,12 @@ const LoginBox = () => {
   return (
     <Wrapper>
       <h2>로그인</h2>
-      <form className="login-form" onSubmit={handlerSuccessLogin}>
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="input-container">
           <input
             type="text"
             id="input-username"
-            {...register("userid", { required: true })}
+            {...register("id", { required: true })}
             onFocus={handlerFocusOnInput}
             onBlur={handlerFocusOutInput}
             className="login-input"
@@ -80,7 +82,7 @@ const LoginBox = () => {
           <input
             type="password"
             id="input-password"
-            {...register("userpassword", { required: true })}
+            {...register("password", { required: true })}
             className="login-input"
             onFocus={handlerFocusOnInput}
             onBlur={handlerFocusOutInput}
@@ -102,7 +104,9 @@ const LoginBox = () => {
           type="submit"
           value="회원가입"
           className="join"
-          onClick={goJoinPage}
+          onClick={() => {
+            navigate("/join");
+          }}
         />
       </form>
     </Wrapper>
