@@ -13,24 +13,37 @@ type User = {
 };
 
 const LoginBox = () => {
+  const dispatch = useAppDispatch();
   const idRef = useRef<HTMLLabelElement>(null);
   const passwordRef = useRef<HTMLLabelElement>(null);
 
   const navigate = useNavigate();
 
-  const { register, watch, handleSubmit } = useForm<User>({});
+  const { register, watch, handleSubmit, setFocus, resetField } = useForm<User>(
+    {}
+  );
 
   const onSubmit = (data: User) => {
-    axios
-      .post("http://localhost:8001/auth/login", data, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(document.cookie);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    try {
+      axios
+        .post("http://localhost:8001/auth/login", data, {
+          withCredentials: true,
+        })
+        .then((data) => {
+          console.log(data);
+          if (data.data.status === 3) {
+            alert(`${data.data.message}`);
+            resetField("id");
+            resetField("password");
+            setFocus("id");
+          } else {
+            dispatch(authActions.login());
+            navigate("/");
+          }
+        });
+    } catch (e) {
+      console.error(e);
+    }
   };
   // input focus animation
   const handlerFocusOnInput = (e: any) => {
