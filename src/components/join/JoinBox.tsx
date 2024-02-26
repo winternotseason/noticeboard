@@ -37,6 +37,7 @@ const JoinBox = () => {
       clearErrors("passwordCheck");
     }
   }, [watch("password"), watch("passwordCheck")]);
+  
   const onSubmit = (data: FormValues) => {
     axios
       .post("http://localhost:8001/auth/join", data)
@@ -64,7 +65,7 @@ const JoinBox = () => {
           type="text"
           className="join-input"
           {...register("id", {
-            required: true,
+            required: { value: true, message: '아이디를 입력하세요.'},
             pattern: {
               value: regExpEm,
               message: "아이디를 다시 입력해주세요. (영문자 또는 숫자 6~20자)",
@@ -82,7 +83,7 @@ const JoinBox = () => {
           id="nickname"
           className="join-input"
           {...register("nickname", {
-            required: true,
+            required: { value: true, message: '닉네임을 입력하세요.'},
             pattern: {
               value: regExpNm,
               message:
@@ -101,7 +102,7 @@ const JoinBox = () => {
           id="input-password"
           className="join-input"
           {...register("password", {
-            required: true,
+            required: { value: true, message: '비밀번호를 입력하세요.'},
             pattern: {
               value: regExgPw,
               message: "비밀번호를 다시 입력해주세요. (영문, 숫자 조합 8~16자)",
