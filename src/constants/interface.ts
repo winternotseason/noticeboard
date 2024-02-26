@@ -40,3 +40,9 @@ export interface User {
   password: string;
   nickname: string;
 }
+
+
+export type LoginUser = {
+  id:string,
+  password:string
+}

@@ -1,8 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Selected.scss";
+import { useAppDispatch } from "../../hooks";
+import { authActions } from "../../store/auth";
 
 const Selected: React.FC<any> = ({ setSelectedManu }) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   /* 목록 메뉴 컨테이너 reference */
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,6 +27,10 @@ const Selected: React.FC<any> = ({ setSelectedManu }) => {
     };
   }, [ref]);
 
+  const handlerSuccessLogout = (e: React.FormEvent<HTMLDivElement>) => {
+    dispatch(authActions.logout());
+    navigate("/login");
+  };
   return (
     <div className="list-container" ref={ref}>
       <ul className="list">
@@ -67,7 +75,7 @@ const Selected: React.FC<any> = ({ setSelectedManu }) => {
             공지사항
           </NavLink>
         </li>
-        <div onClick={onClick}>
+        <div onClick={handlerSuccessLogout}>
           <NavLink to="/login" className="logout">
             로그아웃
           </NavLink>

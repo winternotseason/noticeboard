@@ -1,16 +1,15 @@
 $color-green: #04aa6d;
 
 .wrapper {
-    width: 80%;
-    height: 40rem;
-    padding: 3rem;
-    border-radius: 30px;
-    background-color: #f6fff0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    h2 {
-      margin: 0;
-      font-size: 40px;
-      font-weight: 900;
-      color: $color-green;
-    }
+  width: 80%;
+  padding: 3rem;
+  border-radius: 30px;
+  background-color: #f6fff0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  h2 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 900;
+    color: $color-green;
   }
+}

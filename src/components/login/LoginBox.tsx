@@ -3,13 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./LoginBox.scss";
 import Wrapper from "../UI/Wrapper";
+import { useAppDispatch } from "../../hooks";
+import { authActions } from "../../store/auth";
+import axios from "axios";
+
 
 const LoginBox = () => {
+
   const idRef = useRef<HTMLLabelElement>(null);
   const passwordRef = useRef<HTMLLabelElement>(null);
 
   const navigate = useNavigate();
-  
+
   const { register, watch } = useForm({
     mode: "onChange",
   });
@@ -18,8 +23,12 @@ const LoginBox = () => {
     navigate("/join");
   };
 
-  const handlerSuccessLogin = () => {
-    navigate("/");
+  const handlerSuccessLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    axios.post("http://localhost:8001/auth/login", {
+      id: watch("userid"),
+      password: watch("userpassword"),
+    });
   };
   // input focus animation
   const handlerFocusOnInput = (e: any) => {
@@ -53,7 +62,7 @@ const LoginBox = () => {
   return (
     <Wrapper>
       <h2>로그인</h2>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handlerSuccessLogin}>
         <div className="input-container">
           <input
             type="text"
@@ -87,12 +96,7 @@ const LoginBox = () => {
           </label>
           <span>아이디 저장하기</span>
         </div>
-        <input
-          type="submit"
-          value="로그인"
-          className="login"
-          onClick={handlerSuccessLogin}
-        />
+        <input type="submit" value="로그인" className="login" />
         <input type="submit" value="카카오톡으로 로그인" className="kakao" />
         <input
           type="submit"
