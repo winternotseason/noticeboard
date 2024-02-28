@@ -1,13 +1,14 @@
 import "./JoinBox.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { regExpEm, regExgPw, regExpNm } from "../../constants/reg";
 import Wrapper from "../UI/Wrapper";
 import { useEffect } from "react";
 
+
 type FormValues = {
-  id: string;
+  email: string;
   nickname: string;
   password: string;
   passwordCheck: string;
@@ -37,17 +38,16 @@ const JoinBox = () => {
       clearErrors("passwordCheck");
     }
   }, [watch("password"), watch("passwordCheck")]);
-  
   const onSubmit = (data: FormValues) => {
     axios
       .post("http://localhost:8001/auth/join", data)
-      .then(() => {
-        alert("회원가입 성공");
-        navigate("/login");
+      .then((res: AxiosResponse) => {
+        if (res.data.status === 200) {
+          alert("회원가입 성공");
+          navigate("/login");
+        }
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch((e) => console.error(e));
   };
 
   return (
@@ -64,16 +64,16 @@ const JoinBox = () => {
         <input
           type="text"
           className="join-input"
-          {...register("id", {
-            required: { value: true, message: '아이디를 입력하세요.'},
+          {...register("email", {
+            required: { value: true, message: "아이디를 입력하세요." },
             pattern: {
               value: regExpEm,
               message: "아이디를 다시 입력해주세요. (영문자 또는 숫자 6~20자)",
             },
           })}
         />
-        {errors.id?.message && (
-          <p className="error-message">{errors.id?.message}</p>
+        {errors.email?.message && (
+          <p className="error-message">{errors.email?.message}</p>
         )}
         <label htmlFor="nickname" unselectable="on">
           닉네임
@@ -83,7 +83,7 @@ const JoinBox = () => {
           id="nickname"
           className="join-input"
           {...register("nickname", {
-            required: { value: true, message: '닉네임을 입력하세요.'},
+            required: { value: true, message: "닉네임을 입력하세요." },
             pattern: {
               value: regExpNm,
               message:
@@ -102,7 +102,7 @@ const JoinBox = () => {
           id="input-password"
           className="join-input"
           {...register("password", {
-            required: { value: true, message: '비밀번호를 입력하세요.'},
+            required: { value: true, message: "비밀번호를 입력하세요." },
             pattern: {
               value: regExgPw,
               message: "비밀번호를 다시 입력해주세요. (영문, 숫자 조합 8~16자)",

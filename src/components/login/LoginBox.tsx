@@ -8,7 +8,7 @@ import { authActions } from "../../store/auth";
 import axios from "axios";
 
 type User = {
-  id: string;
+  email: string;
   password: string;
 };
 
@@ -29,13 +29,13 @@ const LoginBox = () => {
         .post("http://localhost:8001/auth/login", data, {
           withCredentials: true,
         })
-        .then((data) => {
-          console.log(data);
+        .then(async (data) => {
           if (data.data.status === 3) {
             alert(`${data.data.message}`);
-            resetField("id");
+            resetField("email");
             resetField("password");
-            setFocus("id");
+            setFocus("email");
+            return;
           } else {
             dispatch(authActions.login());
             navigate("/");
@@ -62,7 +62,7 @@ const LoginBox = () => {
   };
 
   // input에 value 있을때 label 안보이게
-  if (watch("id")) {
+  if (watch("email")) {
     idRef.current?.classList.add("label-opcacity");
   } else {
     idRef.current?.classList.remove("label-opcacity");
@@ -82,7 +82,7 @@ const LoginBox = () => {
           <input
             type="text"
             id="input-username"
-            {...register("id", { required: true })}
+            {...register("email", { required: true })}
             onFocus={handlerFocusOnInput}
             onBlur={handlerFocusOutInput}
             className="login-input"
