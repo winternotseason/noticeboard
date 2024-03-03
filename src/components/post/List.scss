@@ -1,6 +1,26 @@
 .post-list {
-  h3 {
-    text-align: center;
+  .post-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    h3 {
+      margin: 0;
+    }
+    .btn {
+      padding: 6px 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      text-align: center;
+      border-radius: 7px;
+      border: none;
+      background-color: #04aa6d;
+      color: white;
+      cursor: pointer;
+    }
   }
   ul {
     padding: 0;

@@ -9,7 +9,7 @@ const ListItem: React.FC<{ post: Post }> = ({ post }) => {
       <Link to={`/main/${post.index}`} className="item-content">
         <div className="item-main-content">{post.title}</div>
         <div className="item-sub-content">
-          {post.name} | 조회 : {post.view}
+          작성자 : {post.name} | 조회 : {post.view}
         </div>
       </Link>
     </li>

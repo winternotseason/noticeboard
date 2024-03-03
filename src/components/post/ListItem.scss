@@ -1,5 +1,5 @@
 .item {
-  padding: 0.5rem;
+  padding: 1rem;
   border-bottom: 1px solid rgb(189, 189, 189);
   cursor: pointer;
   .item-content {
@@ -9,7 +9,8 @@
       color: #868686;
     }
     .item-main-content {
-      margin-bottom: 0.2rem;
+      font-size:18px;
+      margin-bottom: 0.5rem;
       font-weight: 800;
       color: black;
     }

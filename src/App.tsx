@@ -10,6 +10,7 @@ import ErrorPage from "./pages/Error";
 import PostDetailPage from "./pages/PostDetail";
 import Join from "./pages/Join";
 import LoginPage from "./pages/Login";
+import PostingPage from "./pages/Posting";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/album",
         element: <Album />,
+      },
+      {
+        path: "/posting",
+        element: <PostingPage />,
       },
     ],
   },

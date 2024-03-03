@@ -68,7 +68,7 @@ const JoinBox = () => {
             required: { value: true, message: "아이디를 입력하세요." },
             pattern: {
               value: regExpEm,
-              message: "아이디를 다시 입력해주세요. (영문자 또는 숫자 6~20자)",
+              message: "이메일 형식이 잘못되었습니다.",
             },
           })}
         />

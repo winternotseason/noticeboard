@@ -1,9 +1,15 @@
 $color-green: #04aa6d;
 
+
+
 .header {
-  width: 100vw;
+  position: sticky;
+  background-color: white;
+  z-index: 999;
+  top: 0;
+
   margin: auto;
-  padding: 1.8rem 1.5rem;
+  padding: 1.2rem 0.9rem;
   display: flex;
   box-shadow: 0 5px 5px -5px #333;
   border-bottom: 1px solid rgb(216, 216, 216);
@@ -20,14 +26,15 @@ $color-green: #04aa6d;
       font-weight: 800;
       h4 {
         margin-left: 1rem;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         margin-right: 0;
         margin-top: 0;
         margin-bottom: 0;
         font-weight: 600;
+        color: #04aa6d;
       }
       p {
-        font-size: 1.3rem;
+        font-size: 0.8rem;
         color: #333;
         font-weight: 600;
         margin-left: 0.15rem;
