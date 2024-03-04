@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 
 const Header = () => {
+  useEffect(() => {
+    const getUser = async () => {
+      const data = await axios.get("https://localhost:8001/userinfo", {
+        withCredentials: true,
+      });
+      console.log(data);
+    };
+    getUser();
+  }, []);
   return (
     <header className="header">
       <nav>

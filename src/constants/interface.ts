@@ -8,31 +8,18 @@ export interface Post {
 export const postList: Post[] = [
   {
     index: 1,
-    name: "guest1",
-    title: "첫번째 글 ㅎㅎㅎ",
+    name: "김민정",
+    title: "자료 첨부) 프론트엔드 백엔드 연결 여부",
     view: 3,
   },
-  { index: 2, name: "guest2", title: "게시판 만들기", view: 4 },
-  { index: 3, name: "guest3", title: "재밌다ㅏㅏㅏ", view: 6 },
-  { index: 4, name: "guest1", title: "이거 봐바", view: 14 },
+  { index: 2, name: "유지민", title: "모던 리액트 정독하기", view: 4 },
   {
-    index: 5,
-    name: "gues41",
-    title: "다섯번째 글 ㅎ",
-    view: 1,
+    index: 3,
+    name: "안유진",
+    title: "추천) 몽고디비 개념서 추천합니다",
+    view: 6,
   },
-  {
-    index: 6,
-    name: "guest5",
-    title: "미쳣다 이거",
-    view: 9,
-  },
-  {
-    index: 7,
-    name: "guest10",
-    title: "ㅅㅂ 졸려",
-    view: 10,
-  },
+  { index: 4, name: "장원영", title: "AWS로 배포까지 하셔야 합니다", view: 14 },
 ];
 
 export interface User {
@@ -41,8 +28,7 @@ export interface User {
   nickname: string;
 }
 
-
 export type LoginUser = {
-  id:string,
-  password:string
-}
+  id: string;
+  password: string;
+};

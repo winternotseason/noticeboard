@@ -6,7 +6,6 @@ import { regExpEm, regExgPw, regExpNm } from "../../constants/reg";
 import Wrapper from "../UI/Wrapper";
 import { useEffect } from "react";
 
-
 type FormValues = {
   email: string;
   nickname: string;
@@ -40,7 +39,7 @@ const JoinBox = () => {
   }, [watch("password"), watch("passwordCheck")]);
   const onSubmit = (data: FormValues) => {
     axios
-      .post("http://localhost:8001/auth/join", data)
+      .post("https://localhost:8001/auth/join", data)
       .then((res: AxiosResponse) => {
         if (res.data.status === 200) {
           alert("회원가입 성공");

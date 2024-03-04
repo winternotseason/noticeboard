@@ -7,9 +7,14 @@ const ListItem: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <li className="item">
       <Link to={`/main/${post.index}`} className="item-content">
-        <div className="item-main-content">{post.title}</div>
-        <div className="item-sub-content">
-          작성자 : {post.name} | 조회 : {post.view}
+        <div className="main-content">
+          <div className="item-main-title">{post.title}</div>
+          <div className="item-discription">
+            작성자 : {post.name} | 조회 : {post.view}
+          </div>
+        </div>
+        <div className="posted-date">
+          <p>2024.02.27</p>
         </div>
       </Link>
     </li>

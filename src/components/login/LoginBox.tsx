@@ -26,7 +26,7 @@ const LoginBox = () => {
   const onSubmit = (data: User) => {
     try {
       axios
-        .post("http://localhost:8001/auth/login", data, {
+        .post("https://localhost:8001/auth/login", data, {
           withCredentials: true,
         })
         .then(async (data) => {
@@ -45,6 +45,7 @@ const LoginBox = () => {
       console.error(e);
     }
   };
+
   // input focus animation
   const handlerFocusOnInput = (e: any) => {
     if (e.target.id === "input-username") {
