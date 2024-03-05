@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./LoginBox.scss";
 import Wrapper from "../UI/Wrapper";
 import { useAppDispatch } from "../../hooks";
 import { authActions } from "../../store/auth";
+import { userActions } from "../../store/user";
 import axios from "axios";
 
 type User = {
@@ -17,6 +18,9 @@ const LoginBox = () => {
   const idRef = useRef<HTMLLabelElement>(null);
   const passwordRef = useRef<HTMLLabelElement>(null);
 
+  useEffect(() => {
+    dispatch(userActions.deletedEmail());
+  }, []);
   const navigate = useNavigate();
 
   const { register, watch, handleSubmit, setFocus, resetField } = useForm<User>(
@@ -38,6 +42,7 @@ const LoginBox = () => {
             return;
           } else {
             dispatch(authActions.login());
+            dispatch(userActions.savedEmail(watch("email")));
             navigate("/");
           }
         });
@@ -89,7 +94,7 @@ const LoginBox = () => {
             className="login-input"
           />
           <label htmlFor="input-username" unselectable="on" ref={idRef}>
-            아이디
+            이메일
           </label>
         </div>
         <div className="input-container">

@@ -1,7 +1,7 @@
-import banner1 from "../../../assets/banner1.png";
-import banner2 from "../../../assets/banner2.png";
-import banner3 from "../../../assets/KDT-Data_Analysis-main_banner_PC.png";
-import banner4 from "../../../assets/KDT-full_stack-main_banner_PC.png";
+import banner1 from "../../../assets/banner/An+autumn+song.jpg";
+import banner2 from "../../../assets/banner/Seoul+forest,+Summer.jpg";
+import banner3 from "../../../assets/banner/banner3.jpg";
+import banner4 from "../../../assets/banner/𝐏𝗿𝗶𝗺𝗿𝗼𝘀𝗲+𝗵𝗶𝗹𝗹.jpeg";
 
 export const images = [
   { id: 0, img: banner1 },
