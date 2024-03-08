@@ -2,24 +2,49 @@ import "./PostingMain.scss";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { RiFileEditLine } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { useAppDispatch } from "../../hooks";
 
 type PostValue = {
+  id: string;
   title: string;
   content: string;
   img?: string;
 };
 
 const PostingMain = () => {
+  const user = useSelector((state: RootState) => state.user);
+  const token = useSelector((state: RootState) => state.auth.accessToken);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
+  if (isAuthenticated) {
+    console.log("로그인 중입니다.");
+  } else {
+    console.log("로그인 상태가 아닙니다.");
+  }
   const navigate = useNavigate();
   const [imgUrl, setImgUrl] = useState();
   const [fileValue, setFileValue] = useState("첨부파일");
   const { register, handleSubmit } = useForm<PostValue>();
 
   const uploadPost = async (data: PostValue) => {
-    const post = { title: data.title, content: data.content, url: imgUrl };
-    const res = await axios.post("http://localhost:8001/post", post);
+    const post = {
+      id: user.id,
+      title: data.title,
+      content: data.content,
+      url: imgUrl,
+    };
+    const res = await axios.post("https://localhost:8001/post", post, {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+      withCredentials: true,
+    });
     if (res.data.status === 2001) {
       navigate("/album");
     }
@@ -31,7 +56,7 @@ const PostingMain = () => {
       const formData = new FormData();
       formData.append("img", uploadFile);
       await axios
-        .post("http://localhost:8001/post/img", formData)
+        .post("https://localhost:8001/post/img", formData)
         .then((res) => {
           setImgUrl(res.data.url);
           setFileValue(e.target.files[0].name);

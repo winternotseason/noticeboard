@@ -1,23 +1,37 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface userState {
+export type UserInfo = {
   email: string;
-}
+  id: string;
+  nickname: string;
+  createdAt: string;
+  profile? : string;
+};
 
-const initialUserEmail: userState = {
+const initialUserInfo: UserInfo = {
   email: "",
+  id: "",
+  nickname: "",
+  createdAt: "",
+  profile : ''
 };
 
 const userSlice = createSlice({
   name: "user",
-  initialState: initialUserEmail,
+  initialState: initialUserInfo,
   reducers: {
-    savedEmail(state, action: PayloadAction<string>) {
-      state.email = action.payload;
+    savedUserInfo(state, action: PayloadAction<UserInfo>) {
+      state.createdAt = action.payload.createdAt;
+      state.email = action.payload.email;
+      state.id = action.payload.id;
+      state.nickname = action.payload.nickname;
     },
-    deletedEmail(state) {
-      state.email = "";
+    changeNickname(state, action: PayloadAction<string>) {
+      state.nickname = action.payload;
     },
+    changeProfile(state, action: PayloadAction<string>) {
+      state.profile = action.payload
+    }
   },
 });
 

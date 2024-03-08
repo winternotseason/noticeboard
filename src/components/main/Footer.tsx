@@ -8,9 +8,15 @@ const Footer = () => {
   return (
     <div className="fixed">
       <footer>
-        <NavLink to="/"><Card img={chaticon} /></NavLink>
-        <NavLink to="/"><Card img={homeicon} /></NavLink>
-        <Card img={infoicon} />
+        <NavLink to="/">
+          <Card img={chaticon} />
+        </NavLink>
+        <NavLink to="/">
+          <Card img={homeicon} />
+        </NavLink>
+        <NavLink to="/mypage">
+          <Card img={infoicon} />
+        </NavLink>
       </footer>
     </div>
   );

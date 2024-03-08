@@ -1,0 +1,37 @@
+.mypage-container {
+  margin: 2rem;
+
+  .my-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgb(240, 240, 240);
+    .my-info-img {
+      position: relative;
+      img {
+        border-radius: 50%;
+        width: 13rem;
+        height: 13rem;
+      }
+    }
+    .my-info-content {
+      margin-top: 1rem;
+      p {
+        font-weight: 700;
+      }
+    }
+    .change-my-img {
+      position: absolute;
+      top:8rem;
+      right: 0;
+      font-size: 50px;
+      color: rgb(93, 93, 93);
+      cursor: pointer;
+    }
+    #profile-img {
+      display: none;
+    }
+  }
+}

@@ -18,15 +18,13 @@ const LoginBox = () => {
   const idRef = useRef<HTMLLabelElement>(null);
   const passwordRef = useRef<HTMLLabelElement>(null);
 
-  useEffect(() => {
-    dispatch(userActions.deletedEmail());
-  }, []);
   const navigate = useNavigate();
 
   const { register, watch, handleSubmit, setFocus, resetField } = useForm<User>(
     {}
   );
 
+  // 백엔드 서버 로그인 함수
   const onSubmit = (data: User) => {
     try {
       axios
@@ -41,8 +39,12 @@ const LoginBox = () => {
             setFocus("email");
             return;
           } else {
+            // 엑세스 토큰 저장
+            console.log(data.data)
+            dispatch(authActions.savedAccessToken(data.data.accessToken));
+            // 로그인 상태를 true로
             dispatch(authActions.login());
-            dispatch(userActions.savedEmail(watch("email")));
+            // 마이페이지로
             navigate("/");
           }
         });

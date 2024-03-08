@@ -11,6 +11,7 @@ import PostDetailPage from "./pages/PostDetail";
 import Join from "./pages/Join";
 import LoginPage from "./pages/Login";
 import PostingPage from "./pages/Posting";
+import MyPage from "./pages/MyPage";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/posting",
         element: <PostingPage />,
+      },
+      {
+        path: "/mypage",
+        element: <MyPage />,
       },
     ],
   },
