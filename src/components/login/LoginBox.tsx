@@ -1,12 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./LoginBox.scss";
 import Wrapper from "../UI/Wrapper";
 import { useAppDispatch } from "../../hooks";
 import { authActions } from "../../store/auth";
-import { userActions } from "../../store/user";
+
 import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 type User = {
   email: string;
@@ -39,9 +41,6 @@ const LoginBox = () => {
             setFocus("email");
             return;
           } else {
-            // 엑세스 토큰 저장
-            console.log(data.data)
-            dispatch(authActions.savedAccessToken(data.data.accessToken));
             // 로그인 상태를 true로
             dispatch(authActions.login());
             // 마이페이지로

@@ -46,7 +46,7 @@ const PostingMain = () => {
       withCredentials: true,
     });
     if (res.data.status === 2001) {
-      navigate("/album");
+      navigate("/board");
     }
   };
 

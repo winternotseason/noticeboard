@@ -4,30 +4,37 @@ import { FaPenToSquare } from "react-icons/fa6";
 import axios from "axios";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 import { useAppDispatch } from "../../hooks";
 import { userActions } from "../../store/user";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+type UserInfo = {
+  email : string,
+  nickname : string,
+  password : string,
+  createdAt : string
+}
 const MypageContainer = () => {
-  const dispatch = useAppDispatch();
+  const [userInfo, setUserInfo] = useState<UserInfo>();
   const profile = useSelector((state: RootState) => state.user.profile);
-  const user = useSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
 
-
-  const uploadProfile = async (e: any) => {
-    if (e.target.files) {
-      const uploadProfileImg = e.target.files[0];
-      const formData = new FormData();
-      formData.append("profile-img", uploadProfileImg);
+  useEffect(() => {
+    const test = async () => {
       await axios
-        .post("https://localhost:8001/profile/img", formData, {
-          withCredentials:true
-        })
-        .then((res) => {
-          dispatch(userActions.changeProfile(res.data.url));
-        })
-        .catch((e) => console.error(e));
-    }
+        .get("https://localhost:8001/user")
+        .then((res) => setUserInfo(res.data.user));
+    };
+    test();
+  }, []);
+
+  console.log(userInfo)
+  const handlerLogout = async () => {
+    await axios.get("https://localhost:8001/auth/logout").then(() => {
+      console.log("로그아웃 성공");
+      navigate("/login");
+    });
   };
   return (
     <div className="mypage-container">
@@ -41,21 +48,18 @@ const MypageContainer = () => {
           <label htmlFor="profile-img">
             <FaPenToSquare className="change-my-img" />
           </label>
-          <input
-            type="file"
-            id="profile-img"
-            name="profile-img"
-            onChange={uploadProfile}
-          />
+          <input type="file" id="profile-img" name="profile-img" />
         </div>
 
         <div className="my-info-content">
-          <p>닉네임 : {user.nickname}</p>
-          <p>이메일 : {user.email}</p>
-          <p>가입날짜 : {user.createdAt.slice(0,10)}</p>
+          <p>닉네임 : {userInfo?.nickname}</p>
+          <p>이메일 : {userInfo?.email}</p>
+          <p>가입날짜 : {userInfo?.createdAt.slice(0, 10)}</p>
         </div>
       </div>
-      <div className="my-content"></div>
+      <div className="my-content">
+        <button onClick={handlerLogout}>logout</button>
+      </div>
     </div>
   );
 };

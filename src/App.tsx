@@ -3,9 +3,8 @@ import { useMediaQuery } from "react-responsive";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import Layout from "./pages/Layout";
-import Announce from "./pages/Announce";
-import Free from "./pages/Free";
-import Album from "./pages/Album";
+
+import BulletinBorad from "./pages/BulletinBorad";
 import ErrorPage from "./pages/Error";
 import PostDetailPage from "./pages/PostDetail";
 import Join from "./pages/Join";
@@ -32,16 +31,8 @@ const router = createBrowserRouter([
         element: <PostDetailPage />,
       },
       {
-        path: "/announce",
-        element: <Announce />,
-      },
-      {
-        path: "/free",
-        element: <Free />,
-      },
-      {
-        path: "/album",
-        element: <Album />,
+        path: "/board",
+        element: <BulletinBorad />,
       },
       {
         path: "/posting",
